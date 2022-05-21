@@ -34,8 +34,18 @@ const Navbar = () => {
         </Stack>
       </Stack>
       <Stack direction="row" spacing={10} alignItems="center">
-        <Img src="images/icon-cart.svg" height="20px" />
-        <Img src="images/image-avatar.png" height="50px" />
+        <Img src="images/icon-cart.svg" height="20px" cursor="pointer" />
+        <Img
+          src="images/image-avatar.png"
+          height="50px"
+          borderRadius="50%"
+          border="2px solid transparent"
+          _hover={{
+            border: "2px solid",
+            borderColor: "primary.400",
+          }}
+          cursor="pointer"
+        />
       </Stack>
     </Stack>
   );
