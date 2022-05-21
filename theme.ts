@@ -15,5 +15,8 @@ export default extendTheme({
     primary: {
       ...theme.colors.orange
     }
+  },
+  fonts: {
+    body: 'Kumbh Sans, sans-serif'
   }
 })
