@@ -1,30 +1,27 @@
 import { Box, Button, Img, Stack, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {};
 
 const Product = (props: Props) => {
+  const [selectedImage, setSelectedImage] = useState<Number>(1);
   return (
     <Stack direction="row" padding="50px" spacing={32}>
       <Box flex={1}>
         <Img
-          src="images/image-product-1.jpg"
+          src={`images/image-product-${selectedImage}.jpg`}
           cursor="pointer"
           borderRadius={14}
         />
         <Stack direction="row" marginTop={10} spacing={10}>
-          <Box>
-            <SmallImage src="images/image-product-1.jpg" />
-          </Box>
-          <Box>
-            <SmallImage src="images/image-product-2.jpg" />
-          </Box>
-          <Box>
-            <SmallImage src="images/image-product-3.jpg" />
-          </Box>
-          <Box>
-            <SmallImage src="images/image-product-4.jpg" />
-          </Box>
+          {[1, 2, 3, 4].map((i) => (
+            <Box key={i} onClick={() => setSelectedImage(i)}>
+              <SmallImage
+                src={`images/image-product-${i}.jpg`}
+                isSelected={i === selectedImage}
+              />
+            </Box>
+          ))}
         </Stack>
       </Box>
       <Box flex={1} paddingY={16}>
@@ -81,8 +78,23 @@ const Product = (props: Props) => {
   );
 };
 
-const SmallImage = ({ src }: { src: string }) => {
-  return <Img src={src} cursor="pointer" borderRadius={14} />;
+const SmallImage = ({
+  src,
+  isSelected,
+}: {
+  src: string;
+  isSelected: boolean;
+}) => {
+  return (
+    <Img
+      src={src}
+      cursor="pointer"
+      borderRadius={14}
+      border={isSelected ? "2px solid" : "2px solid"}
+      borderColor={isSelected ? "primary.500" : "transparent"}
+      filter={isSelected ? "opacity(0.5)" : ""}
+    />
+  );
 };
 
 export default Product;
