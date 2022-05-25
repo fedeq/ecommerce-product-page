@@ -9,12 +9,13 @@ const Cart = (props: Props) => {
 
   return (
     <Stack
+      cursor="pointer"
       justifyContent="center"
       alignItems="center"
       height="100%"
       position="relative"
     >
-      <Img src="images/icon-cart.svg" height="20px" cursor="pointer" />
+      <Img src="images/icon-cart.svg" height="20px" />
       {cant > 0 && (
         <Stack
           position="absolute"
