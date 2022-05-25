@@ -1,5 +1,6 @@
 import { Box, Img, Stack, Text } from "@chakra-ui/react";
 import React from "react";
+import Cart from "./Cart";
 import NavbarItem from "./NavbarItem";
 const Navbar = () => {
   return (
@@ -33,8 +34,8 @@ const Navbar = () => {
           <NavbarItem>Contact</NavbarItem>
         </Stack>
       </Stack>
-      <Stack direction="row" spacing={10} alignItems="center">
-        <Img src="images/icon-cart.svg" height="20px" cursor="pointer" />
+      <Stack direction="row" spacing={10} alignItems="center" height="100%">
+        <Cart />
         <Img
           src="images/image-avatar.png"
           height="50px"

@@ -1,14 +1,11 @@
-import { Badge, Box, Button, Img, Stack, Text } from "@chakra-ui/react";
-import React, { useCallback, useState } from "react";
+import { Badge, Box, Img, Stack, Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import AddToCart from "./AddToCart";
 
 type Props = {};
 
 const Product = (props: Props) => {
   const [selectedImage, setSelectedImage] = useState<number>(1);
-  const [cant, setCant] = useState<number>(0);
-
-  const incrementCant = () => setCant((cant) => cant + 1);
-  const decrementCant = () => setCant((cant) => cant - 1);
 
   return (
     <Stack direction="row" padding="50px" spacing={32}>
@@ -76,46 +73,7 @@ const Product = (props: Props) => {
           >
             $250.00
           </Text>
-          <Stack direction="row" paddingTop={8}>
-            <Stack
-              direction="row"
-              justifyContent="center"
-              alignItems="center"
-              backgroundColor="gray.100"
-              borderRadius="10px"
-              marginRight={2}
-            >
-              <Button
-                color="primary.500"
-                fontSize="24px"
-                height="100%"
-                paddingBottom="4px"
-                onClick={decrementCant}
-              >
-                <Text>-</Text>
-              </Button>
-              <Text width={14} textAlign="center">
-                {cant}
-              </Text>
-              <Button
-                paddingBottom="4px"
-                color="primary.500"
-                fontSize="24px"
-                height="100%"
-                onClick={incrementCant}
-              >
-                <Text>+</Text>
-              </Button>
-            </Stack>
-            <Button
-              backgroundColor="primary.500"
-              textColor="white"
-              width="250px"
-              height="50px"
-            >
-              Add to cart
-            </Button>
-          </Stack>
+          <AddToCart />
         </Stack>
       </Box>
     </Stack>
