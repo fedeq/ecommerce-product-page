@@ -1,11 +1,16 @@
 import { Box, Img, Stack, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { useCartContext } from "../context/cartContext";
+import CartModal from "./CartModal";
 
 type Props = {};
 
 const Cart = (props: Props) => {
   const { cant } = useCartContext();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const toggleModal = () => {
+    setShowModal((showModal) => !showModal);
+  };
 
   return (
     <Stack
@@ -14,6 +19,7 @@ const Cart = (props: Props) => {
       alignItems="center"
       height="100%"
       position="relative"
+      onClick={toggleModal}
     >
       <Img src="images/icon-cart.svg" height="20px" />
       {cant > 0 && (
@@ -33,6 +39,7 @@ const Cart = (props: Props) => {
           <Text>{cant}</Text>
         </Stack>
       )}
+      {showModal && <CartModal />}
     </Stack>
   );
 };
